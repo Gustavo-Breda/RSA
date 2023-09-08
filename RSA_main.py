@@ -7,14 +7,14 @@ from RSA_bases import *
 def chinese_remainder_theorem (number: int, p: int, q: int, d: int) -> int: 
     ''' Resolution through Chinese Remainder Theorem '''
 
-    ## REDUCED EXPOENTS
+    ## REDUCE THE EXPOENTS
     dp = d % (p - 1)
     dq = d % (q - 1)
 
     ## TAKE THE INVERSES MODULO N
     _, inv_p, inv_q = EEA_natural (p, q)
 
-    ## REDUCED THE MESSAGES
+    ## REDUCE THE MESSAGES
     reduced_number_p = number % p
     reduced_number_q = number % q
 
