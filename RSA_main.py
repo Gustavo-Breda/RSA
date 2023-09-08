@@ -106,7 +106,7 @@ def RSA_test (number: int) -> str:
     return ('inconclusive')
 
 def random_prime (r: int) -> int: 
-    ''' Return a PROBABLY PRIME with (r) digits  '''
+    ''' Return a PROBABLY random (r) numbers PRIME   '''
 
     while True: 
 
