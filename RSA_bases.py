@@ -74,18 +74,18 @@ class Theorem:
 
 class Fermat: 
 
-    def composite_test_one (number: int, random=None) -> str: 
+    def composite_test_one (number: int, random=None) -> bool: 
         ''' FERMAT test to assess if NUMBER is COMPOSITE '''
         
         if (random == None): 
             random = randint (2, number)
 
         if (pow (random, number, number) == (random % number)): 
-            return ("Inconclusive")
+            return (False)
         else: 
-            return ("True")
+            return (True)
             
-    def composite_test_two (number: int, random=None) -> str: 
+    def composite_test_two (number: int, random=None) -> bool: 
         ''' FERMAT test to assess if NUMBER is COMPOSITE '''
         
         if (random == None): 
@@ -99,9 +99,9 @@ class Fermat:
             raise ValueError ("The basis and number has to be co-primes")
         
         if (pow (random, number - 1, number) == 1): 
-            return ("Inconclusive")
+            return (False)
         else: 
-            return ("True")
+            return (True)
 
     def pseudo_primes (boundary: int) -> list: 
         ''' Return the PSEUDO-PRIMES lower than the boundary '''
@@ -112,7 +112,7 @@ class Fermat:
 
             for basis in range (2, odd_number + 1): 
                 
-                if (Fermat.composite_test_one (odd_number, basis) == "True"):
+                if (Fermat.composite_test_one (odd_number, basis)):
                     break
                 
                 if (basis == odd_number): 
@@ -219,7 +219,7 @@ class Prime:
     
 
     def test_MRA (number: int, tests: list = None) -> str: 
-        ''' MILLER-RABIN test whose assess if NUMBER is COMPOSITE '''
+        ''' MILLER-RABIN test whose assess if NUMBER is PRIME '''
 
         k = (number - 1)
         even_factors = 0
@@ -255,12 +255,12 @@ class Prime:
 
                     ## WE REACHED TO THE LAST EVEN FACTOR
                     if (factor == even_factors): 
-                        return 'False'
+                        return ('False')
 
         return ('inconclusive')
 
     def test_BLS (number: int) -> bool: 
-        ''' Test of 3 mathmaticians whose assess if NUMBER is PRIME '''
+        ''' BRILHART, LEHMER and SELFRIDGE test whose assess if NUMBER is PRIME '''
 
         if (number == 2): 
             return True
@@ -273,15 +273,15 @@ class Prime:
             for b in range (3, n + 1): 
                 
                 if (pow (b, n, number) != 1): 
-                    return False
+                    return (False)
 
                 if (pow (b, (n // n_factor), number) != 1): 
                     break
                 
                 if (b == n): 
-                    return False
+                    return (False)
 
-        return True
+        return (True)
 
 
     def factors (number: int) -> dict: 
