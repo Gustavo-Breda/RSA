@@ -5,7 +5,7 @@ from RSA_bases import *
 # ------------------------------------------------------------------
 
 def chinese_remainder_theorem (number: int, p: int, q: int, d: int) -> int: 
-    ''' Resolution through Chinese Remainder Theorem '''
+    ''' Resolution of two equations through Chinese Remainder Theorem '''
 
     ## REDUCE THE EXPOENTS
     dp = d % (p - 1)
@@ -81,7 +81,7 @@ def code_to_symb (code: int) -> str:
     return (str (dct [code]))
     
 def RSA_test (number: int) -> str: 
-    ''' RSA tests to assess if number is PRIME ''' 
+    ''' RSA tests which assess if NUMBER is PRIME ''' 
 
     iterator = Prime.iterator ()
     current = next (iterator)
@@ -180,7 +180,7 @@ def decrypt_naive (e_text: list, d: int, modulo: int) -> str:
 
 def decrypt_chinese (e_text: list, p: int, q: int, d: int) -> str: 
 
-    ## DECRYPT THE SECTIONS WITG THE CHINESE REMAINDER THEOREM
+    ## DECRYPT THE SECTIONS WITH THE CHINESE REMAINDER THEOREM
     dt_code_sections = [str (chinese_remainder_theorem (section, p, q, d)) for section in e_text]
 
     ## SEPARATE THE SECTIONS IN 3 NUMBERS AGAIN

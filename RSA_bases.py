@@ -5,12 +5,12 @@ from math import log, isqrt
 class Theorem: 
 
     def Korselt (boundary: int) -> list: 
-        ''' KORSELT method to CARMICHAEL numbers lower than the boundary '''
+        ''' KORSELT method which takes CARMICHAEL numbers lower than the boundary '''
 
         composite_numbers = Prime.Eratosthenes_C_sieve(boundary)
         Carmichael_numbers = []
         
-        ## TAKE THE COMPOSITE NUMBERS WHOSE SATISFIES THE KORSELT THEOREM
+        ## TAKE THE COMPOSITE NUMBERS which SATISFIES THE KORSELT THEOREM
         for composite in composite_numbers: 
             
             factors = Prime.factors (composite)
@@ -35,7 +35,7 @@ class Theorem:
         return (Carmichael_numbers)
 
     def Carmichael (boundary: int) -> list: 
-        ''' Naive method to CARMICHAEL numbers lower than the boundary '''
+        ''' Naive method which takes CARMICHAEL numbers lower than the boundary '''
 
         ## TAKE THE COMPOSITE PSEUDO-PRIMES
         Carmichael_numbers = [pp for pp in Fermat.pseudo_primes (boundary) if len (Prime.factors (pseudo_prime)) > 1]
@@ -75,7 +75,7 @@ class Theorem:
 class Fermat: 
 
     def composite_test_one (number: int, random=None) -> bool: 
-        ''' FERMAT test to assess if NUMBER is COMPOSITE '''
+        ''' FERMAT test which assess if NUMBER is COMPOSITE '''
         
         if (random == None): 
             random = randint (2, number)
@@ -86,7 +86,7 @@ class Fermat:
             return (True)
             
     def composite_test_two (number: int, random=None) -> bool: 
-        ''' FERMAT test to assess if NUMBER is COMPOSITE '''
+        ''' FERMAT test which assess if NUMBER is COMPOSITE '''
         
         if (random == None): 
 
@@ -219,7 +219,7 @@ class Prime:
     
 
     def test_MRA (number: int, tests: list = None) -> str: 
-        ''' MILLER-RABIN test whose assess if NUMBER is PRIME '''
+        ''' MILLER-RABIN test which assess if NUMBER is PRIME '''
 
         k = (number - 1)
         even_factors = 0
@@ -260,7 +260,7 @@ class Prime:
         return ('inconclusive')
 
     def test_BLS (number: int) -> bool: 
-        ''' BRILHART, LEHMER and SELFRIDGE test whose assess if NUMBER is PRIME '''
+        ''' BRILHART, LEHMER and SELFRIDGE test which assess if NUMBER is PRIME '''
 
         if (number == 2): 
             return True
@@ -327,7 +327,7 @@ class Prime:
             raise ValueError ("Value not factorized")
 
     def iterator () -> int: 
-        ''' Function whose return PRIMES each time called '''
+        ''' Function which return PRIMES each time called '''
 
         iterator_list = []
         current = 2 
